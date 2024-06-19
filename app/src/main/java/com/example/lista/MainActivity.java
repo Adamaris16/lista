@@ -2,6 +2,7 @@ package com.example.lista;
 
 import android.os.Bundle;
 
+import com.example.lista.WebService.WebService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.lista.databinding.ActivityMainBinding;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        int String;
+        Map<String, String> datos = new HashMap<>(String); String>();
+        WebService ws= new WebService("https://reqres.in/api/users",
+                datos, MainActivity.this, MainActivity.this);
+        ws.execute("GET");
     }
 
 }
